@@ -2,7 +2,7 @@ GenomicDB_Scripts
 Generate the configuration files (CallSet.json and LoaderConfiguration.json) to run the GenomicDB application
 
 
- Copyright (c) 2017 SIDRA Medical and Research Center, Biomedical Informatics, Doha, Qatar
+ # Copyright (c) 2017 SIDRA Medical and Research Center, Biomedical Informatics, Doha, Qatar
  Authors:
              
              Ramzi Temanni <rtemanni@sidra.org>
