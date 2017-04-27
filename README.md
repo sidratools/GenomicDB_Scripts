@@ -35,3 +35,8 @@ The gVCF files are imported into GenomicDB [3] which required the following file
 
 We are generating the mapping and configuration files based on available number of cores to run the GenomicDB program.
 
+Reference:
+---------
+1. https://software.broadinstitute.org/gatk/documentation/tooldocs/current/org_broadinstitute_gatk_tools_walkers_variantutils_GenotypeGVCFs.php
+2. https://github.com/Intel-HLS/GenomicsDB/wiki
+3. https://github.com/Intel-HLS/GenomicsDB/wiki/Importing-VCF-data-into-GenomicsDB
