@@ -29,8 +29,11 @@ We used  GenomicsDB[2] to combine multiple GVCF files for GenotypeGVCF.
 This GenotypeGVCFs is taking 4.5 days instead of 34 days for 3020 gVCFs file.
 
 The GenomicDB is built on top of the TileDB system by the Intel Health and Life Science team.
+
 The gVCF files are imported into GenomicDB [3] which required the following files:
+
         • vid_mapping_file: This is a JSON file contains Mapping contigs to disjoint column intervals, Mapping row id to samples/CallSets and Fields information.
+        
         • loader_config_file: This is a JSON file, where the GenomicDB file is controlled for running on multiple nodes/cores.
 
 We are generating the mapping and configuration files based on available number of cores to run the GenomicDB program.
