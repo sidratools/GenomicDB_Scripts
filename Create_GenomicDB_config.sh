@@ -450,14 +450,14 @@ fi
          echo "You are using" $NUM_CORES "cores!" ;
        printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
        Validate_gVCF_is_Compressed;
-	mkdir -p $PRJDIR
-	export CALLSETFILE="$PRJDIR/callset_$(date +%Y%m%d).json"
-	export CONFFILE="loader_config_file_$(date +%Y%m%d)"
-        export OUTFILE="$PRJDIR/COMBINE_Samples_$(date +%Y%m%d)"
+#	mkdir -p $PRJDIR
+#	export CALLSETFILE="$PRJDIR/callset_$(date +%Y%m%d).json"
+#	export CONFFILE="loader_config_file_$(date +%Y%m%d)"
+#        export OUTFILE="$PRJDIR/COMBINE_Samples_$(date +%Y%m%d)"
 #        echo "Generate_TileDB_Callset_from_gVCFs $DATADIR $CALLSETFILE"
-        Generate_TileDB_Callset_from_gVCFs $DATADIR $CALLSETFILE
+#        Generate_TileDB_Callset_from_gVCFs $DATADIR $CALLSETFILE
 #        echo "Generate_TileDB_Multi_config_from_gVCFs_multioutgvcf $PRJDIR $CONFFILE $OUTFILE $CALLSETFILE"
-        Generate_TileDB_Multi_config_from_gVCFs_multioutgvcf $PRJDIR $CONFFILE $OUTFILE $CALLSETFILE
+#        Generate_TileDB_Multi_config_from_gVCFs_multioutgvcf $PRJDIR $CONFFILE $OUTFILE $CALLSETFILE
 fi
 }
 
