@@ -4,7 +4,9 @@ Generate the configuration files (CallSet.json and LoaderConfiguration.json) to 
 
  Copyright (c) 2017 SIDRA Medical and Research Center, Biomedical Informatics, Doha, Qatar
  Authors:
+             
              Ramzi Temanni <rtemanni@sidra.org>
+             
              Nagarajan Kathiresan <nkathiresan@sidra.org>
 
     This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by
