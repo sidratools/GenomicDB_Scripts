@@ -55,11 +55,11 @@ $ ./Create_GenomicDB_config.sh --help
 
    Alternatively, user can specify one or more following options:
      OPTIONS:
-       -P | --project                   Your project directory, where all the results will be created (by default, /gpfs/home/naga is used).
-       -D | --directory                 Your gVCF files directory, where all the gVCF files available (by default, /gpfs/home/naga is used).
-       -R | --reference                 Your Reference file (by default, the GATK REFERENCE will be get it from gVCF files ).
-       -N | --cores                     No. of cores to be used for data-parallelization (Required).
-       -h | --help                      Display this help message
+       -P | --project   Your project directory, where all the results will be created (by default, /gpfs/home/naga is used).
+       -D | --directory  Your gVCF files directory, where all the gVCF files available (by default, /gpfs/home/naga is used).
+       -R | --reference:  Your Reference file (by default, the GATK REFERENCE will be get it from gVCF files ).
+       -N | --cores      No. of cores to be used for data-parallelization (Required).
+       -h | --help       Display this help message
 
 
 Different use cases:
