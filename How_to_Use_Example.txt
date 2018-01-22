@@ -147,7 +147,75 @@ This will generate COMBINE_Samples_20170427_32.vcf.gz file in your $PROJECT dire
 
 
 
+Running the GenomicDB using LSF job array:
+===========================================
+
+Example: 
+  We have 32 loader_json_config_file availeble and we are using LSF job array of 32 using in the following two scripts: 
+
+Script #1: Used to run the GenomicDB called "run_GenomicDB.sh"
+
+    $ cat run_GenomicDB.sh 
+       #!/bin/bash
+       module load GenomicsDB/0.8.1
+       vcf2tiledb loader_config_file_20180122_$LSB_JOBINDEX.json
+
+Script #2: LSF job array invoked as follows: 
+
+    bsub -P test -J "GenomicDB[1-32]" -o "out.%J.%I" -e "err.%J.%I" -n 1 ./run_GenomicDB.sh
+   
+This will create a single LSF job with 32 instances. 
+
+$ bjobs -w | grep GenomicDB
+780910[15] nkathiresan RUN   normal     hpcinteractive01 nsnodes     GenomicDB[15] Jan 22 09:06
+780910[16] nkathiresan RUN   normal     hpcinteractive01 nsnodes     GenomicDB[16] Jan 22 09:06
+780910[17] nkathiresan RUN   normal     hpcinteractive01 nsnodes     GenomicDB[17] Jan 22 09:06
+780910[18] nkathiresan RUN   normal     hpcinteractive01 nsnodes     GenomicDB[18] Jan 22 09:06
+780910[19] nkathiresan RUN   normal     hpcinteractive01 nsnodes     GenomicDB[19] Jan 22 09:06
+780910[20] nkathiresan RUN   normal     hpcinteractive01 nsnodes     GenomicDB[20] Jan 22 09:06
+780910[21] nkathiresan RUN   normal     hpcinteractive01 JRNAS1      GenomicDB[21] Jan 22 09:06
+780910[22] nkathiresan RUN   normal     hpcinteractive01 JRNAS1      GenomicDB[22] Jan 22 09:06
+780910[23] nkathiresan RUN   normal     hpcinteractive01 JRNAS1      GenomicDB[23] Jan 22 09:06
+780910[24] nkathiresan RUN   normal     hpcinteractive01 JRNAS1      GenomicDB[24] Jan 22 09:06
+780910[25] nkathiresan RUN   normal     hpcinteractive01 JRNAS1      GenomicDB[25] Jan 22 09:06
+780910[26] nkathiresan RUN   normal     hpcinteractive01 JRNAS1      GenomicDB[26] Jan 22 09:06
+780910[27] nkathiresan RUN   normal     hpcinteractive01 JRNAS1      GenomicDB[27] Jan 22 09:06
+780910[28] nkathiresan RUN   normal     hpcinteractive01 JRNAS1      GenomicDB[28] Jan 22 09:06
+780910[29] nkathiresan RUN   normal     hpcinteractive01 JRNAS1      GenomicDB[29] Jan 22 09:06
+780910[30] nkathiresan RUN   normal     hpcinteractive01 JRNAS1      GenomicDB[30] Jan 22 09:06
+780910[31] nkathiresan RUN   normal     hpcinteractive01 JRNAS1      GenomicDB[31] Jan 22 09:06
+780910[32] nkathiresan RUN   normal     hpcinteractive01 JRNAS1      GenomicDB[32] Jan 22 09:06
+780910[1] nkathiresan RUN   normal     hpcinteractive01 JRNAS1      GenomicDB[1] Jan 22 09:06
+780910[2] nkathiresan RUN   normal     hpcinteractive01 JRNAS1      GenomicDB[2] Jan 22 09:06
+780910[3] nkathiresan RUN   normal     hpcinteractive01 JRNAS1      GenomicDB[3] Jan 22 09:06
+780910[4] nkathiresan RUN   normal     hpcinteractive01 JRNAS1      GenomicDB[4] Jan 22 09:06
+780910[5] nkathiresan RUN   normal     hpcinteractive01 JRNAS1      GenomicDB[5] Jan 22 09:06
+780910[6] nkathiresan RUN   normal     hpcinteractive01 JRNAS1      GenomicDB[6] Jan 22 09:06
+780910[7] nkathiresan RUN   normal     hpcinteractive01 JRNAS1      GenomicDB[7] Jan 22 09:06
+780910[8] nkathiresan RUN   normal     hpcinteractive01 JRNAS1      GenomicDB[8] Jan 22 09:06
+780910[9] nkathiresan RUN   normal     hpcinteractive01 JRNAS1      GenomicDB[9] Jan 22 09:06
+780910[10] nkathiresan RUN   normal     hpcinteractive01 JRNAS1      GenomicDB[10] Jan 22 09:06
+780910[11] nkathiresan RUN   normal     hpcinteractive01 JRNAS1      GenomicDB[11] Jan 22 09:06
+780910[12] nkathiresan RUN   normal     hpcinteractive01 JRNAS1      GenomicDB[12] Jan 22 09:06
+780910[13] nkathiresan RUN   normal     hpcinteractive01 JRNAS1      GenomicDB[13] Jan 22 09:06
+780910[14] nkathiresan RUN   normal     hpcinteractive01 JRNAS1      GenomicDB[14] Jan 22 09:06
+
+   
+   
+
+Single gVCF file:
+=================
+
+To get the single gCVF file from the GenomicDB, modify the Create_GenomicDB_config.sh file in the line number: 195
+
+ \"column_partitions\" : [{\"begin\": $step, \"end\": $endval, \"vcf_output_filename\": \"${OUTFILE}_${var}.vcf.gz\" }], 
+ into 
+  \"column_partitions\" : [{\"begin\": $step, \"end\": $endval, \"vcf_output_filename\": \"${OUTFILE}.vcf.gz\" }],
+
+
+
 Reference: 
+=======
 1. https://software.broadinstitute.org/gatk/documentation/tooldocs/current/org_broadinstitute_gatk_tools_walkers_variantutils_GenotypeGVCFs.php 
 2. https://github.com/Intel-HLS/GenomicsDB/wiki 
 3. https://github.com/Intel-HLS/GenomicsDB/wiki/Importing-VCF-data-into-GenomicsDB 
