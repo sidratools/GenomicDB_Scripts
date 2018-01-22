@@ -153,14 +153,16 @@ Running the GenomicDB using LSF job array:
 Example: 
   We have 32 loader_json_config_file availeble and we are using LSF job array of 32 using in the following two scripts: 
 
-Script #1: Used to run the GenomicDB called "run_GenomicDB.sh"
+Script #1: 
+Used to run the GenomicDB called "run_GenomicDB.sh"
 
     $ cat run_GenomicDB.sh 
        #!/bin/bash
        module load GenomicsDB/0.8.1
        vcf2tiledb loader_config_file_20180122_$LSB_JOBINDEX.json
 
-Script #2: LSF job array invoked as follows: 
+Script #2: 
+LSF job array was called as follows: 
 
     bsub -P test -J "GenomicDB[1-32]" -o "out.%J.%I" -e "err.%J.%I" -n 1 ./run_GenomicDB.sh
    
@@ -206,7 +208,7 @@ $ bjobs -w | grep GenomicDB
 Single gVCF file:
 =================
 
-To get the single gCVF file from the GenomicDB, modify the Create_GenomicDB_config.sh file in the line number: 195
+To get the single gVCFF file from the GenomicDB, modify the Create_GenomicDB_config.sh file in the line number: 195
 
  \"column_partitions\" : [{\"begin\": $step, \"end\": $endval, \"vcf_output_filename\": \"${OUTFILE}_${var}.vcf.gz\" }], 
  into 
