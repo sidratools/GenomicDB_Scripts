@@ -208,7 +208,7 @@ $ bjobs -w | grep GenomicDB
 Single gVCF file:
 =================
 
-To get the single gVCFF file from the GenomicDB, modify the Create_GenomicDB_config.sh file in the line number: 195
+To get the single gVCFF file from the GenomicDB, modify the Create_GenomicDB_config.sh file in the line number: 203
 
  \"column_partitions\" : [{\"begin\": $step, \"end\": $endval, \"vcf_output_filename\": \"${OUTFILE}_${var}.vcf.gz\" }], 
  into 
